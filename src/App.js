@@ -6,8 +6,10 @@ import FilterTask from "./components/FilterTask"
 import Footer from "./components/Footer"
 
 
+
 const App = () => {
   const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState("");
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -33,11 +35,9 @@ const App = () => {
    console.log(task)
   }
 
-  // filter a task
+  // // filter a task
   const filterTask = (task) => {
-    {task.filter((task) =>
-      task.text.toLowerCase().includes(query)
-      ).map((task) => (''))}
+    return task.text.toLowerCase().includes(filter.toLowerCase())
   }
  //LUDDIGT HÄR
 
@@ -49,20 +49,24 @@ const App = () => {
 
   // ta bort alla tasks
   
+const filteredList = tasks.filter (filterTask) 
+
 
   return (
     <div className='container'>
       <Header />
       <AddTask onAdd={addTask}/>
       <hr></hr>
-      <FilterTask/>
+      <FilterTask filterInput={filter} setInputFilter={setFilter} />
       {tasks.length > 0 ? (
-        <Tasks tasks={tasks} onDelete=
-        {deleteTask} />
+        <Tasks tasks={filteredList} onDelete=
+        {deleteTask}  />
       ) : (
         'Inga aktiviteter att visa :('
       )}
-      <Footer/>
+      <Footer />
+    
+      
     </div>
   ) 
       
