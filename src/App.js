@@ -47,6 +47,10 @@ const App = () => {
     console.log('delete', id)
   }
 
+  const deleteAllTasks = () => {
+    setTasks([])
+  }
+
   // ta bort alla tasks
   
 const filteredList = tasks.filter (filterTask) 
@@ -64,7 +68,7 @@ const filteredList = tasks.filter (filterTask)
       ) : (
         'Inga aktiviteter att visa :('
       )}
-      <Footer />
+      <Footer onDeleteAll={deleteAllTasks} />
     
       
     </div>

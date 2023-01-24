@@ -1,8 +1,9 @@
 import RemoveAllButton from "./RemoveAllButton"
 
-  const Footer = () => {
+  const Footer = ({onDeleteAll}) => {
     const onClick = () => {
         console.log('Raderade alla')
+        onDeleteAll()
     }
   return (
     <footer>
