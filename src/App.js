@@ -27,19 +27,19 @@ const App = () => {
 
   // add task
   const addTask = (task) => {
-   const id = Math.floor(Math.random() * 100) + 1
-   const newTask = { id, ...task}
-   setTasks([...tasks, newTask])
+    const id = Math.floor(Math.random() * 100) + 1
+    const newTask = { id, ...task }
+    setTasks([...tasks, newTask])
 
-   console.log(id)
-   console.log(task)
+    console.log(id)
+    console.log(task)
   }
 
   // // filter a task
   const filterTask = (task) => {
     return task.text.toLowerCase().includes(filter.toLowerCase())
   }
- //LUDDIGT HÄR
+  //LUDDIGT HÄR
 
   // ta bort task
   const deleteTask = (id) => {
@@ -52,28 +52,28 @@ const App = () => {
   }
 
   // ta bort alla tasks
-  
-const filteredList = tasks.filter (filterTask) 
+
+  const filteredList = tasks.filter(filterTask)
 
 
   return (
     <div className='container'>
       <Header />
-      <AddTask onAdd={addTask}/>
+      <AddTask onAdd={addTask} />
       <hr></hr>
       <FilterTask filterInput={filter} setInputFilter={setFilter} />
       {tasks.length > 0 ? (
         <Tasks tasks={filteredList} onDelete=
-        {deleteTask}  />
+          {deleteTask} />
       ) : (
         'Inga aktiviteter att visa :('
       )}
       <Footer onDeleteAll={deleteAllTasks} />
-    
-      
+
+
     </div>
-  ) 
-      
+  )
+
 }
 
 export default App
